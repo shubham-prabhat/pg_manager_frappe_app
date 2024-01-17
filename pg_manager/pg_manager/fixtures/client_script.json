@@ -1,0 +1,24 @@
+[
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Room Booking",
+  "enabled": 1,
+  "modified": "2024-01-17 12:16:11.761804",
+  "module": "PG Manager",
+  "name": "throw message on Aadhar number count less than 12",
+  "script": "frappe.ui.form.on('Room Booking', {\n    validate: function(frm) {\n        var d = frm.doc;\n\n        if (d.customer_identity == \"Aadhar No.\" && d.customer_identity_number.length !== 12) {\n            frappe.msgprint((\"For 'Aadhar No.', the 'customer_identity_number' should be 12 characters long\"));\n            frappe.validated = false;\n        } else if (d.customer_identity == \"Voter ID No.\" && d.customer_identity_number.length !== 16) {\n            frappe.msgprint((\"For 'Voter ID No.', the 'customer_identity_number' should be 16 characters long\"));\n            frappe.validated = false;\n        } else if (d.customer_identity == \"Driving Licence No.\" && d.customer_identity_number.length !== 14) {\n            frappe.msgprint((\"For 'Driving Licence No.', the 'customer_identity_number' should be 14 characters long\"));\n            frappe.validated = false;\n        }\n    }\n});",
+  "view": "Form"
+ },
+ {
+  "docstatus": 0,
+  "doctype": "Client Script",
+  "dt": "Room Booking",
+  "enabled": 1,
+  "modified": "2024-01-17 12:15:57.528442",
+  "module": "PG Manager",
+  "name": "set the field value on local",
+  "script": "frappe.ui.form.on('Room Booking', {\r\n    refresh: function(frm) {\r\n        // Check if the form is in insert mode or if it's a local document\r\n        if (frm.doc.__islocal || frm.doc.__unsaved) {\r\n            // Set the \"room_status\" field to \"Select\"\r\n            frm.set_value('booking_status', 'Select');\r\n        }\r\n    }\r\n});\r\n",
+  "view": "Form"
+ }
+]

@@ -1,0 +1,210 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{Room Booked} on {creation}",
+ "creation": "2024-01-13 22:08:33.563977",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "column_break_tprk",
+  "amended_from",
+  "title",
+  "room_details_section_break",
+  "room_table",
+  "customer_details_section",
+  "customer_name",
+  "employee_assigned",
+  "check_in_date",
+  "check_in_time",
+  "booking_status",
+  "customer_email",
+  "column_break_for_better_look",
+  "customer_contact_number",
+  "check_out_date",
+  "customer_advance_paid",
+  "customer_identity",
+  "customer_identity_number",
+  "section_break_before_details",
+  "customer_address",
+  "column_break_for_better_look_3",
+  "apartment_address"
+ ],
+ "fields": [
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Title",
+   "unique": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Room Booking",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "check_in_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Check In Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "check_in_time",
+   "fieldtype": "Time",
+   "in_list_view": 1,
+   "label": "Check in Time",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_address",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_contact_number",
+   "fieldtype": "Phone",
+   "label": "Customer Contact Number"
+  },
+  {
+   "fieldname": "customer_advance_paid",
+   "fieldtype": "Currency",
+   "label": "Customer Advance Paid",
+   "reqd": 1
+  },
+  {
+   "fieldname": "check_out_date",
+   "fieldtype": "Date",
+   "label": "Check Out Date"
+  },
+  {
+   "fieldname": "employee_assigned",
+   "fieldtype": "Data",
+   "label": "Care Taker Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "room_table",
+   "fieldtype": "Table",
+   "label": "Room",
+   "no_copy": 1,
+   "options": "Room Booking Table",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "customer_details_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Details"
+  },
+  {
+   "fieldname": "room_details_section_break",
+   "fieldtype": "Section Break",
+   "label": "Room Details"
+  },
+  {
+   "fieldname": "column_break_for_better_look",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_for_better_look_3",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "apartment_address",
+   "fieldtype": "Data",
+   "label": "Apartment Address"
+  },
+  {
+   "fieldname": "section_break_before_details",
+   "fieldtype": "Section Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Select",
+   "options": "R-B-.DD.-.MM.-.YYYY.-.{customer_name}-.#####\nRoom Booked on {date(\"YYYY-MM-DD HH:mm:ss\")}"
+  },
+  {
+   "default": "Select",
+   "fieldname": "booking_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "label": "Booking Status",
+   "options": "Select\nPending\nConfirmed\nCancelled",
+   "read_only": 1
+  },
+  {
+   "fieldname": "customer_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Customer Email"
+  },
+  {
+   "fieldname": "customer_identity",
+   "fieldtype": "Select",
+   "label": "Customer Identity",
+   "options": "Select\nAadhar No.\nVoter ID No.\nDriving Licence No."
+  },
+  {
+   "fieldname": "customer_identity_number",
+   "fieldtype": "Data",
+   "label": "Customer Identity Number",
+   "mandatory_depends_on": "eval: doc.docstatus == 0",
+   "read_only_depends_on": "eval: doc.customer_identity == 'Select'",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_tprk",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2024-01-17 18:58:15.583161",
+ "modified_by": "Administrator",
+ "module": "PG Manager",
+ "name": "Room Booking",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [
+  {
+   "color": "Green",
+   "title": "Confirm"
+  }
+ ]
+}
